@@ -1106,8 +1106,8 @@ useSecurityKey: "ブラウザまたはデバイスの言う通りに、セキュ
 replies: "返事"
 renotes: "Renote"
 _announcement:
-  forExistingUsers: "もうおるユーザーのみ"
-  forExistingUsersDescription: "有効にすると、このお知らせ作成時点でおるユーザーにのみお知らせが表示されます。無効にすると、このお知らせ作成後にアカウントを作成したユーザーにもお知らせが表示されます。"
+  forExistingUsers: "もうおるユーザのみ"
+  forExistingUsersDescription: "有効にすると、このお知らせ作成時点でおるユーザにのみお知らせが表示されます。無効にすると、このお知らせ作成後にアカウントを作成したユーザにもお知らせが表示されます。"
   needConfirmationToRead: "既読にするのに確認が必要やで"
   needConfirmationToReadDescription: "有効にすると、このお知らせを既読にする際に確認ダイアログが表示されます。また、一括既読操作の対象にもなりません。"
   end: "お知らせを終了"
