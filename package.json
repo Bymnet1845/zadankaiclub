@@ -1,6 +1,6 @@
 {
 	"name": "misskey",
-	"version": "2023.10.1-minegumo",
+	"version": "2023.10.0-minegumo",
 	"codename": "nasubi",
 	"repository": {
 		"type": "git",
