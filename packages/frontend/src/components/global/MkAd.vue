@@ -130,8 +130,8 @@ function reduceFrequency(): void {
 
 		> .link,
 		> .link > .img {
-			max-width: min(600px, 100%);
-			max-height: 80px;
+			max-width: min(468px, 100%);
+			max-height: 60px;
 		}
 	}
 
@@ -140,8 +140,8 @@ function reduceFrequency(): void {
 
 		> .link,
 		> .link > .img {
-			max-width: min(600px, 100%);
-			max-height: 250px;
+			max-width: min(728px, 100%);
+			max-height: 90px;
 		}
 	}
 
