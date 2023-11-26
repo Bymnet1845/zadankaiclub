@@ -169,7 +169,6 @@ function reduceFrequency(): void {
 	display: block;
 	object-fit: contain;
 	margin: auto;
-	border-radius: 5px;
 }
 
 .i {
@@ -178,14 +177,16 @@ function reduceFrequency(): void {
 	right: 1px;
 	display: grid;
 	place-content: center;
-	background: var(--panel);
+	background: #333333CC;
 	border-radius: 100%;
 	padding: 2px;
+	color: #FFFFFF;
+	text-shadow: 0 1px 0 #000000;
 }
 
 .iIcon {
-	font-size: 14px;
-	line-height: 17px;
+	font-size: 12px;
+	line-height: 14px;
 }
 
 .menu {
