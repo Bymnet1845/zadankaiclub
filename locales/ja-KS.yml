@@ -1183,7 +1183,7 @@ _initialAccountSetting:
   pushNotificationDescription: "プッシュ通知を有効にすると{name}の通知をあんたのデバイスで受け取れるで。"
   initialAccountSettingCompleted: "初期設定が終わったで。"
   haveFun: "{name}、楽しんでな～"
-  youCanContinueTutorial: "このまま{name}(Misskey)の使い方のチュートリアルに進めるけど、ここで中断してすぐに使い始めることもできるで。"
+  youCanContinueTutorial: "このまま{name}（Misskey）の使い方のチュートリアルに進めるけど、ここで中断してすぐに使い始めることもできるで。"
   startTutorial: "チュートリアルを開始するで"
   skipAreYouSure: "初期設定飛ばすか？"
   laterAreYouSure: "初期設定あとでやり直すん？"
