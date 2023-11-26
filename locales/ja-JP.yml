@@ -65,7 +65,7 @@ loadMore: "もっと見る"
 showMore: "もっと見る"
 showLess: "閉じる"
 youGotNewFollower: "フォローされました"
-receiveFollowRequest: "フォローリクエストされました"
+receiveFollowRequest: "フォロー申請されました"
 followRequestAccepted: "フォローが承認されました"
 mention: "メンション"
 mentions: "あなた宛て"
@@ -1670,7 +1670,7 @@ _email:
   _follow:
     title: "フォローされました"
   _receiveFollowRequest:
-    title: "フォローリクエストを受け取りました"
+    title: "フォロー申請を受け取りました"
 
 _plugin:
   install: "プラグインのインストール"
@@ -2185,8 +2185,8 @@ _notification:
   youGotQuote: "{name}による引用"
   youRenoted: "{name}がリノートしました"
   youWereFollowed: "フォローされました"
-  youReceivedFollowRequest: "フォローリクエストが来ました"
-  yourFollowRequestAccepted: "フォローリクエストが承認されました"
+  youReceivedFollowRequest: "フォロー申請が来ました"
+  yourFollowRequestAccepted: "フォロー申請が承認されました"
   pollEnded: "アンケートの結果が出ました"
   newNote: "新しい投稿"
   unreadAntennaNote: "アンテナ {name}"
