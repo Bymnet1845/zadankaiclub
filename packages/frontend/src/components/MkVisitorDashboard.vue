@@ -193,6 +193,10 @@ function exploreOtherServers() {
 
 .mainAbout {
 	padding: 0 32px;
+
+	a {
+		color: var(--link);
+	}
 }
 
 .mainWarn {

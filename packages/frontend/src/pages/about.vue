@@ -19,7 +19,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 			<MkKeyValue>
 				<template #key>{{ i18n.ts.description }}</template>
-				<template #value><div v-html="instance.description"></div></template>
+				<template #value><div :class="$style.descriptionText" v-html="instance.description"></div></template>
 			</MkKeyValue>
 
 			<FormSection>
@@ -187,6 +187,10 @@ definePageMetadata(computed(() => ({
 	color: #fff;
 	text-shadow: 0 0 8px #000;
 	background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+}
+
+.descriptionText a {
+	color: var(--link);
 }
 
 .rules {
