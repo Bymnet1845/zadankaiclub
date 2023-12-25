@@ -951,7 +951,8 @@ cannotUploadBecauseInappropriate: "きわどい内容を含むかもしれへん
 cannotUploadBecauseNoFreeSpace: "ドライブがもうパンパンやからアップロードできへんわ。"
 cannotUploadBecauseExceedsFileSizeLimit: "ファイルが思うたよりも大きいさかいアップロードできへんでこれ。"
 beta: "ベータ"
-navbar: "ナビゲーションバー"enableAutoSensitive: "自動センシティブ判定"
+navbar: "ナビゲーションバー"
+enableAutoSensitive: "自動センシティブ判定"
 enableAutoSensitiveDescription: "使える時は、機械学習を使って自動でメディアにセンシティブ設定をするで。この機能をオフにしても、サーバによっては自動で設定されることがあるで。"
 activeEmailValidationDescription: "ユーザのメールアドレスのバリデーションを、捨てアドかどうかとか、ちゃんと通信できるかとかを見るで。切ったら単に文字列として合っとるかどうかだけ見るわ。"
 
