@@ -65,7 +65,7 @@ export class EmailService {
 				to: to,
 				subject: subject,
 				text: text,
-				html: `<!doctype html>
+				/* html: `<!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -144,7 +144,7 @@ export class EmailService {
 			<a href="${ this.config.url }">${ this.config.host }</a>
 		</nav>
 	</body>
-</html>`,
+</html>`,*/
 			});
 
 			this.logger.info(`Message sent: ${info.messageId}`);
