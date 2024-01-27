@@ -99,6 +99,7 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 			this.emailService.sendEmail(ps.email, 'パスワードのリセットの要求が有りました',
 				`To reset password, please click this link:<br><a href="${link}">${link}</a>`,
 				`@${user.username}様\r\nID：${user.id}\r\n\r\n\r\n貴方の会員口座に対して、パスワードのリセットが要求されました。\r\n次のURLにアクセスする事で、パスワードのリセットが出来ます。\r\n\r\n${link}\r\n\r\nパスワードをリセットしない場合、この電子メールは無視して下さい。（パスワードはリセットされません。）\r\n\r\n\r\n${instance.name}\r\nhttps://zadankai.club/`
+			);
 		});
 	}
 }
