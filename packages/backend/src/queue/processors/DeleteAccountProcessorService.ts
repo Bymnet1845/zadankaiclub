@@ -115,9 +115,10 @@ export class DeleteAccountProcessorService {
 		{ // Send email notification
 			const profile = await this.userProfilesRepository.findOneByOrFail({ userId: user.id });
 			if (profile.email && profile.emailVerified) {
-				this.emailService.sendEmail(profile.email, '【座談會俱樂部】アカウントを削除しました',
+				this.emailService.sendEmail(profile.email, 'アカウントを削除しました',
 					'Your account has been deleted.',
-					`${user.name}様\r\n\r\n 先程、貴方の会員口座（ユーザ名：@${user.username}／ID：${user.id}）は削除されました。\r\n今迄座談會俱樂部を御利用下さり、有難う御座いました。\r\n\r\n 座談會俱樂部\r\n https://zadankai.club/`);
+					`@${user.username}様\r\n\r\n先程、貴方の会員口座（ID：${user.id}）は削除されました。\r\n今迄座談會俱樂部を御利用下さり、有難う御座いました。\r\n\r\n座談會俱樂部\r\nhttps://zadankai.club/`
+				);
 			}
 		}
 

@@ -60,7 +60,7 @@ export class EmailService {
 		try {
 			// TODO: htmlサニタイズ
 			const info = await transporter.sendMail({
-				from: meta.email!,
+				from: `${meta.name} <${meta.email!}>`,
 				to: to,
 				subject: subject,
 				text: text,
