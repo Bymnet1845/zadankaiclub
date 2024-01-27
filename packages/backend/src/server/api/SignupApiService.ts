@@ -186,9 +186,10 @@ export class SignupApiService {
 
 			const link = `${this.config.url}/signup-complete/${code}`;
 
-			this.emailService.sendEmail(emailAddress!, 'Signup',
+			this.emailService.sendEmail(emailAddress!, '会員登録を完了させて下さい',
 				`To complete signup, please click this link:<br><a href="${link}">${link}</a>`,
-				`To complete signup, please click this link: ${link}`);
+				`座談會俱樂部へようこそ！\r\n会員登録は未だ完了しておりません。次のURLにアクセスして、会員登録を完了させて下さい。\r\n\r\n${link}\r\n\r\n登録完了後は、入力して頂いたユーザ名とパスワードで、座談會俱樂部にログインする事が出来ます。\r\n\r\n\r\n${instance.name}\r\nhttps://zadankai.club/`
+			);
 
 			if (ticket) {
 				await this.registrationTicketsRepository.update(ticket.id, {

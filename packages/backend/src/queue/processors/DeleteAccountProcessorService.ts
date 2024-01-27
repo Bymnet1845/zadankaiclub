@@ -18,6 +18,8 @@ import { QueueLoggerService } from '../QueueLoggerService.js';
 import type * as Bull from 'bullmq';
 import type { DbUserDeleteJobData } from '../types.js';
 
+import { MetaService } from '@/core/MetaService.js';
+
 @Injectable()
 export class DeleteAccountProcessorService {
 	private logger: Logger;
@@ -39,6 +41,7 @@ export class DeleteAccountProcessorService {
 		private emailService: EmailService,
 		private queueLoggerService: QueueLoggerService,
 		private searchService: SearchService,
+		private metaService: MetaService,
 	) {
 		this.logger = this.queueLoggerService.logger.createSubLogger('delete-account');
 	}
@@ -46,6 +49,8 @@ export class DeleteAccountProcessorService {
 	@bindThis
 	public async process(job: Bull.Job<DbUserDeleteJobData>): Promise<string | void> {
 		this.logger.info(`Deleting account of ${job.data.user.id} ...`);
+
+		const meta = await this.metaService.fetch(true);
 
 		const user = await this.usersRepository.findOneBy({ id: job.data.user.id });
 		if (user == null) {
@@ -115,9 +120,9 @@ export class DeleteAccountProcessorService {
 		{ // Send email notification
 			const profile = await this.userProfilesRepository.findOneByOrFail({ userId: user.id });
 			if (profile.email && profile.emailVerified) {
-				this.emailService.sendEmail(profile.email, 'アカウントを削除しました',
+				this.emailService.sendEmail(profile.email, '会員口座を削除しました',
 					'Your account has been deleted.',
-					`@${user.username}様\r\n\r\n先程、貴方の会員口座（ID：${user.id}）は削除されました。\r\n今迄座談會俱樂部を御利用下さり、有難う御座いました。\r\n\r\n座談會俱樂部\r\nhttps://zadankai.club/`
+					`@${user.username}様\r\n\r\n\r\n先程、貴方の会員口座（ID：${user.id}）は削除されました。\r\n再び会員口座を作成する場合、同一のユーザ名は使用出来ませんので、御注意下さい。\r\n\r\n座談會俱樂部を御利用下さり、有難う御座いました。\r\n\r\n\r\n${meta.name}\r\nhttps://zadankai.club/`
 				);
 			}
 		}
