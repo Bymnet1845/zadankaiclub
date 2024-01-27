@@ -115,8 +115,8 @@ export class DeleteAccountProcessorService {
 		{ // Send email notification
 			const profile = await this.userProfilesRepository.findOneByOrFail({ userId: user.id });
 			if (profile.email && profile.emailVerified) {
-				this.emailService.sendEmail(profile.email, 'Account deleted',
-					'Your account has been deleted.',
+				this.emailService.sendEmail(profile.email, '【座談會俱樂部】アカウントを削除しました',
+					`${user.name}様\r\n\r\n 先程、貴方の会員口座（ユーザ名：@${user.username}／ID：${user.id}）は削除されました。\r\n今迄座談會俱樂部を御利用下さり、有難う御座いました。\r\n\r\n 座談會俱樂部\r\n https://zadankai.club/`,
 					'Your account has been deleted.');
 			}
 		}
