@@ -96,9 +96,9 @@ export class AnnouncementService {
 				announcement: packed,
 			});
 
-			this.emailService.sendEmail(profile.email, `${values.title}`,
+			this.emailService.sendEmail(profile.email, `${values.title}（お知らせID：${announcement.id}）`,
 				'The notification has been sent to your account.',
-				`@${user.username}様\r\nID：${user.id}\r\n\r\n\r\n${values.text}`
+				`@${user.username}様\r\nユーザID：${user.id}\r\n\r\n\r\n${values.text}`
 			);
 
 			if (moderator) {
@@ -147,10 +147,20 @@ export class AnnouncementService {
 		});
 
 		const after = await this.announcementsRepository.findOneByOrFail({ id: announcement.id });
+		const user = await this.usersRepository.findOneByOrFail({ id: announcement.userId });
+
+		if (announcement.userId) {
+			const profile = await this.userProfilesRepository.findOneByOrFail({ userId: user.id });
+			
+			this.emailService.sendEmail(profile.email, `【更新】${values.title}（お知らせID：${announcement.id}）`,
+				'The notification sent to your account has been updated.',
+				`@${user.username}様\r\nユーザID：${user.id}\r\n\r\n\r\n（過去の「お知らせ」が更新されましたので、通知します。）\r\n\r\n${values.text}`
+			);
+		} 
 
 		if (moderator) {
 			if (announcement.userId) {
-				const user = await this.usersRepository.findOneByOrFail({ id: announcement.userId });
+				// const user = await this.usersRepository.findOneByOrFail({ id: announcement.userId });
 				this.moderationLogService.log(moderator, 'updateUserAnnouncement', {
 					announcementId: announcement.id,
 					before: announcement,
