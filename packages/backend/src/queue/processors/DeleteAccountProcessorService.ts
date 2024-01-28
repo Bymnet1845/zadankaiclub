@@ -117,7 +117,7 @@ export class DeleteAccountProcessorService {
 			if (profile.email && profile.emailVerified) {
 				this.emailService.sendEmail(profile.email, '会員口座を削除しました',
 					'Your account has been deleted.',
-					`@${user.username}様\r\n\r\n\r\n先程、貴方の会員口座（ID：${user.id}）は削除されました。\r\n再び会員口座を作成する場合、同一のユーザ名は使用出来ませんので、御注意下さい。\r\n\r\n座談會俱樂部を御利用下さり、有難う御座いました。`
+					`@${user.username}様\r\n\r\n\r\n先程、貴方の会員口座（ユーザID：${user.id}）は削除されました。\r\n再び会員口座を作成する場合、同一のユーザ名は使用出来ませんので、御注意下さい。\r\n\r\n座談會俱樂部を御利用下さり、有難う御座いました。`
 				);
 			}
 		}
