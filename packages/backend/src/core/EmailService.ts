@@ -63,7 +63,7 @@ export class EmailService {
 				from: `${meta.name} <${meta.email!}>`,
 				to: to,
 				subject: subject,
-				text: text,
+				text: `${text}\r\n\r\n\r\n${meta.name}\r\nhttps://zadankai.club/\r\n\r\n※この電子メールは自動送信です。送信元の電子メールアドレスは送信専用である為、この電子メールに返信しないで下さい。`,
 				/* html: `<!doctype html>
 <html>
 	<head>

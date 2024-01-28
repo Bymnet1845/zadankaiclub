@@ -17,8 +17,6 @@ import { L_CHARS, secureRndstr } from '@/misc/secure-rndstr.js';
 import { UserAuthService } from '@/core/UserAuthService.js';
 import { ApiError } from '../../error.js';
 
-import { MetaService } from '@/core/MetaService.js';
-
 export const meta = {
 	requireCredential: true,
 
@@ -72,12 +70,10 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 		private emailService: EmailService,
 		private userAuthService: UserAuthService,
 		private globalEventService: GlobalEventService,
-		private metaService: MetaService,
 	) {
 		super(meta, paramDef, async (ps, me) => {
 			const token = ps.token;
 			const profile = await this.userProfilesRepository.findOneByOrFail({ userId: me.id });
-			const instance = await this.metaService.fetch(true);
 
 			if (profile.twoFactorEnabled) {
 				if (token == null) {
@@ -126,9 +122,9 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 
 				const link = `${this.config.url}/verify-email/${code}`;
 
-				this.emailService.sendEmail(ps.email, '電子メールアドレスの変更を完了して下さい',
+				this.emailService.sendEmail(ps.email, '電子メールアドレスを認証して下さい',
 					`To verify email, please click this link:<br><a href="${link}">${link}</a>`,
-					`@${me.username}様\r\nID：${me.id}\r\n\r\n\r\n貴方の会員口座に対して、電子メールアドレスの変更がリクエストされました。\r\n電子メールアドレスの変更を完了する為に、次のURLにアクセスして下さい。\r\n\r\n${link}\r\n\r\n今後、座談會俱樂部からの電子メールは、この電子メールアドレスに対して送られます。\r\n\r\n\r\n${instance.name}\r\nhttps://zadankai.club/`
+					`@${me.username}様\r\nID：${me.id}\r\n\r\n\r\n貴方の会員口座に登録されている電子メールアドレスが変更されました。\r\n次のURLにアクセスして、この電子メールアドレスを認証して下さい。\r\n\r\n${link}\r\n\r\n今後、座談會俱樂部からの電子メールは、この電子メールアドレスに対して送られます。`
 				);
 			}
 

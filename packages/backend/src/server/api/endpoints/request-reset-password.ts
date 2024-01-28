@@ -14,8 +14,6 @@ import { DI } from '@/di-symbols.js';
 import { EmailService } from '@/core/EmailService.js';
 import { L_CHARS, secureRndstr } from '@/misc/secure-rndstr.js';
 
-import { MetaService } from '@/core/MetaService.js';
-
 export const meta = {
 	tags: ['reset password'],
 
@@ -59,10 +57,8 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 
 		private idService: IdService,
 		private emailService: EmailService,
-		private metaService: MetaService,
 	) {
 		super(meta, paramDef, async (ps, me) => {
-			const instance = await this.metaService.fetch(true);
 
 			const user = await this.usersRepository.findOneBy({
 				usernameLower: ps.username.toLowerCase(),
@@ -96,9 +92,9 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 
 			const link = `${this.config.url}/reset-password/${token}`;
 
-			this.emailService.sendEmail(ps.email, 'パスワードのリセットの要求が有りました',
+			this.emailService.sendEmail(ps.email, 'パスワードのリセットが要求されました',
 				`To reset password, please click this link:<br><a href="${link}">${link}</a>`,
-				`@${user.username}様\r\nID：${user.id}\r\n\r\n\r\n貴方の会員口座に対して、パスワードのリセットが要求されました。\r\n次のURLにアクセスする事で、パスワードのリセットが出来ます。\r\n\r\n${link}\r\n\r\nパスワードをリセットしない場合、この電子メールは無視して下さい。（パスワードはリセットされません。）\r\n\r\n\r\n${instance.name}\r\nhttps://zadankai.club/`
+				`@${user.username}様\r\nID：${user.id}\r\n\r\n\r\n貴方の会員口座に登録されているパスワードのリセットが要求されました。\r\n次のURLにアクセスすると、新しいパスワードを設定する事が出来ます。\r\n\r\n${link}\r\n\r\nパスワードをリセットしない場合、この電子メールは無視して下さい。（パスワードは変更されません。）`
 			);
 		});
 	}

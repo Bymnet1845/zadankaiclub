@@ -7,12 +7,14 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Brackets } from 'typeorm';
 import { DI } from '@/di-symbols.js';
 import type { MiUser } from '@/models/User.js';
-import type { AnnouncementReadsRepository, AnnouncementsRepository, MiAnnouncement, MiAnnouncementRead, UsersRepository } from '@/models/_.js';
+import type { AnnouncementReadsRepository, AnnouncementsRepository, MiAnnouncement, MiAnnouncementRead, UsersRepository, UserProfilesRepository } from '@/models/_.js';
 import { bindThis } from '@/decorators.js';
 import { Packed } from '@/misc/json-schema.js';
 import { IdService } from '@/core/IdService.js';
 import { GlobalEventService } from '@/core/GlobalEventService.js';
 import { ModerationLogService } from '@/core/ModerationLogService.js';
+
+import { EmailService } from '@/core/EmailService.js'
 
 @Injectable()
 export class AnnouncementService {
@@ -26,9 +28,14 @@ export class AnnouncementService {
 		@Inject(DI.usersRepository)
 		private usersRepository: UsersRepository,
 
+		@Inject(DI.userProfilesRepository)
+		private userProfilesRepository: UserProfilesRepository,
+
 		private idService: IdService,
 		private globalEventService: GlobalEventService,
 		private moderationLogService: ModerationLogService,
+		
+		private emailService: EmailService,
 	) {
 	}
 
@@ -82,12 +89,20 @@ export class AnnouncementService {
 		const packed = (await this.packMany([announcement]))[0];
 
 		if (values.userId) {
+			const user = await this.usersRepository.findOneByOrFail({ id: values.userId });
+			const profile = await this.userProfilesRepository.findOneByOrFail({ userId: user.id });
+
 			this.globalEventService.publishMainStream(values.userId, 'announcementCreated', {
 				announcement: packed,
 			});
 
+			this.emailService.sendEmail(profile.email, `${values.title}`,
+				'The notification has been sent to your account.',
+				`${values.text}`
+			);
+
 			if (moderator) {
-				const user = await this.usersRepository.findOneByOrFail({ id: values.userId });
+				// const user = await this.usersRepository.findOneByOrFail({ id: values.userId });
 				this.moderationLogService.log(moderator, 'createUserAnnouncement', {
 					announcementId: announcement.id,
 					announcement: announcement,
