@@ -98,7 +98,7 @@ export class AnnouncementService {
 
 			this.emailService.sendEmail(profile.email, `${values.title}`,
 				'The notification has been sent to your account.',
-				`${values.text}`
+				`@${user.username}様\r\nID：${user.id}\r\n\r\n\r\n${values.text}`
 			);
 
 			if (moderator) {
