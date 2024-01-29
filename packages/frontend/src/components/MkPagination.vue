@@ -250,7 +250,7 @@ const fetchMore = async (): Promise<void> => {
 	}).then(res => {
 		for (let i = 0; i < res.length; i++) {
 			const item = res[i];
-			if (i % 10 === 0) item._shouldInsertAd_ = true;
+			if (i % 10 === 2) item._shouldInsertAd_ = true;
 		}
 
 		const reverseConcat = _res => {
