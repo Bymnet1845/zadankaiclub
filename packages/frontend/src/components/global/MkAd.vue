@@ -15,7 +15,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 		}]"
 	>
 		<a :href="chosen.url" target="_blank" :class="$style.link">
-			<img :src="chosen.imageUrl" :class="$style.img">
+			<img :src="chosen.imageUrl" :alt="chosen.memo" :class="$style.img">
 			<button class="_button" :class="$style.i" @click.prevent.stop="toggleMenu"><i :class="$style.iIcon" class="ti ti-info-circle"></i></button>
 		</a>
 	</div>
