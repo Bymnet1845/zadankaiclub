@@ -14,6 +14,9 @@ SPDX-License-Identifier: AGPL-3.0-only
 		</MkInput>
 	</FormSection>
 
+<!-- 
+本家に機能追加される迄コメントアウト
+
 	<FormSection>
 		<MkSwitch :modelValue="$i.receiveAnnouncementEmail" @update:modelValue="onChangeReceiveAnnouncementEmail">
 			{{ i18n.ts.receiveAnnouncementFromInstance }}
@@ -41,6 +44,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 			</MkSwitch>
 		</div>
 	</FormSection>
+-->
 </div>
 <div v-if="!instance.enableEmail" class="_gaps_m">
 	<MkInfo>{{ i18n.ts.emailNotSupported }}</MkInfo>
