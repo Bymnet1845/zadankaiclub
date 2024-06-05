@@ -40,7 +40,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 		<div>
 			<button class="_button" :class="$style.fileAltEditBtn" @click="describe()">
 				<MkKeyValue>
-					<template #key>{{ i18n.ts.description }}</template>
+					<template #key>{{ i18n.ts.caption }}</template>
 					<template #value>{{ file.comment ? file.comment : `(${i18n.ts.none})` }}<i class="ti ti-pencil" :class="$style.fileAltEditIcon"></i></template>
 				</MkKeyValue>
 			</button>
