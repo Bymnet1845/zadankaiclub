@@ -5424,6 +5424,10 @@ export interface Locale extends ILocale {
          */
         "global": string;
     };
+    "_publicNotesOnlyTimelineDescstiption": {
+        "visibility": string;
+        "following": string;
+    };
     "_serverRules": {
         /**
          * 新規登録前に表示する、サーバーの簡潔なルールを設定します。内容は利用規約の要約とすることを推奨します。
