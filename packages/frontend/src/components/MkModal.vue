@@ -471,8 +471,7 @@ defineExpose({
 			left: 0;
 			right: 0;
 			margin: auto;
-			padding: 16px;
-			max-height: calc(100% - 32px);
+			max-height: 100%;
 			overflow-y: scroll;
 		}
 	}
