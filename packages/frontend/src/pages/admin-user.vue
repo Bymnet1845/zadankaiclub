@@ -612,7 +612,7 @@ definePageMetadata(() => ({
 <style lang="scss" module>
 .email {
 	height: 100%; background: var(--fg); display: block;
-	&:hover { background: none !important; }
+	&:active { background: none !important; }
 }
 
 .ip {
