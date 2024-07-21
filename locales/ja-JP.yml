@@ -1371,8 +1371,8 @@ _timelineDescription:
 
 _publicNotesOnlyTimelineDescription:
   visibility: "{host}には、公開範囲が「ホーム」や「フォロワー限定」のノートが多いので、このタイムラインでは見られないノートも沢山あります。"
-  following: "もっとノートを見てみるには、{ff}や{explore}などから、色々なユーザーをフォローしてみましょう。"
-  ff: "他のユーザーのフォロー／フォロワー"
+  following: "もっとノートを見てみるには、{ff}や{explore}などから、色々なユーザーをフォローしてみましょう。フォローしたユーザーのノートは、ホームタイムラインやソーシャルタイムラインで見ることができます。"
+  ff: "他のユーザーのフォロー／フォロワー一覧"
   explore: "「みつける」ページ"
 
 _serverRules:

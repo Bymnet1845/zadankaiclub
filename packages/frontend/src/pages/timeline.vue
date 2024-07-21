@@ -14,7 +14,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 				</MkInfo>
 				<MkPostForm v-if="defaultStore.reactiveState.showFixedPostForm.value" :class="$style.postForm" class="post-form _panel" fixed style="margin-bottom: var(--margin);"/>
 				<div v-if="queue > 0" :class="$style.new"><button class="_buttonPrimary" :class="$style.newButton" @click="top()">{{ i18n.ts.newNoteRecived }}</button></div>
-				<MkInfo v-if="['home', 'global'].includes(src)" style="margin-bottom: var(--margin);">
+				<MkInfo v-if="['local', 'global'].includes(src)" style="margin-bottom: var(--margin);">
 					<I18n :src="i18n.ts._publicNotesOnlyTimelineDescription.visibility" tag="div">
 						<template #host>{{ instance.name ?? host }}</template>
 					</I18n>
