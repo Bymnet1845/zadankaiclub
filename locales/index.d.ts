@@ -5424,9 +5424,11 @@ export interface Locale extends ILocale {
          */
         "global": string;
     };
-    "_publicNotesOnlyTimelineDescstiption": {
+    "_publicNotesOnlyTimelineDescription": {
         "visibility": string;
         "following": string;
+        "ff": string;
+        "explore": string;
     };
     "_serverRules": {
         /**
