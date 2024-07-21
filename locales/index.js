@@ -14,9 +14,13 @@ const merge = (...args) => args.reduce((a, c) => ({
 }), {});
 
  const languages = [
+	'en-US',
 	'ja-JP',
 	'ja-KS',
 	'ja-PM',
+	'ko-KR',
+	'zh-CN',
+	'zh-TW',
 ]; 
 
 /*
@@ -24,7 +28,6 @@ const merge = (...args) => args.reduce((a, c) => ({
 	'cs-CZ',
 	'da-DK',
 	'de-DE',
-	'en-US',
 	'es-ES',
 	'fr-FR',
 	'id-ID',
