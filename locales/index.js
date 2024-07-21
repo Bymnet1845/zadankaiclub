@@ -13,7 +13,13 @@ const merge = (...args) => args.reduce((a, c) => ({
 		.reduce((a, [k, v]) => (a[k] = merge(v, c[k]), a), {})
 }), {});
 
-const languages = [
+ const languages = [
+	'ja-JP',
+	'ja-KS',
+	'ja-PM',
+]; 
+
+/*
 	'ar-SA',
 	'cs-CZ',
 	'da-DK',
@@ -41,7 +47,7 @@ const languages = [
 	'vi-VN',
 	'zh-CN',
 	'zh-TW',
-];
+*/
 
 const primaries = {
 	'en': 'US',
