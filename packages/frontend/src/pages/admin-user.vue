@@ -47,7 +47,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 					</MkKeyValue>
 					<MkKeyValue v-if="info" oneline>
 						<template #key>{{ i18n.ts.email }}</template>
-						<template #value :class="$style.email"><span class="_monospace">{{ info.email }}</span></template>
+						<template #value><span class="_monospace" :class="$style.email">{{ info.email }}</span></template>
 					</MkKeyValue>
 				</div>
 
@@ -611,7 +611,7 @@ definePageMetadata(() => ({
 
 <style lang="scss" module>
 .email {
-	background: var(--fg);
+	height: 100%; background: var(--fg); display: block;
 	&:hover { background: none !important; }
 }
 
