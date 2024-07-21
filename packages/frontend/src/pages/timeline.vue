@@ -62,6 +62,7 @@ import { deviceKind } from '@/scripts/device-kind.js';
 import { deepMerge } from '@/scripts/merge.js';
 import { MenuItem } from '@/types/menu.js';
 import { miLocalStorage } from '@/local-storage.js';
+import { host } from '@/config.js';
 
 provide('shouldOmitHeaderTitle', true);
 
