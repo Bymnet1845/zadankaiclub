@@ -20,7 +20,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 					</I18n>
 					<I18n :src="i18n.ts._publicNotesOnlyTimelineDescription.following" tag="div" style="margin-top: 4px;">
 						<template #ff><b>{{ i18n.ts._publicNotesOnlyTimelineDescription.ff }}</b></template>
-						<template #explore><b><MkA to="/explore">{{ i18n.ts._publicNotesOnlyTimelineDescription.explore }}</MkA></b></template>
+						<template #explore><b><MkA to="/explore#users">{{ i18n.ts._publicNotesOnlyTimelineDescription.explore }}</MkA></b></template>
 					</I18n>
 				</MkInfo>
 				<div :class="$style.tl">
