@@ -7,7 +7,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import ms from 'ms';
 import bcrypt from 'bcryptjs';
 import { Endpoint } from '@/server/api/endpoint-base.js';
-import type { UserProfilesRepository } from '@/models/_.js';
+import type { MiMeta, UserProfilesRepository } from '@/models/_.js';
 import { UserEntityService } from '@/core/entities/UserEntityService.js';
 import { EmailService } from '@/core/EmailService.js';
 import type { Config } from '@/config.js';
@@ -15,7 +15,6 @@ import { DI } from '@/di-symbols.js';
 import { GlobalEventService } from '@/core/GlobalEventService.js';
 import { L_CHARS, secureRndstr } from '@/misc/secure-rndstr.js';
 import { UserAuthService } from '@/core/UserAuthService.js';
-import { MetaService } from '@/core/MetaService.js';
 import { ApiError } from '../../error.js';
 
 export const meta = {
@@ -70,10 +69,12 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 		@Inject(DI.config)
 		private config: Config,
 
+		@Inject(DI.meta)
+		private serverSettings: MiMeta,
+
 		@Inject(DI.userProfilesRepository)
 		private userProfilesRepository: UserProfilesRepository,
 
-		private metaService: MetaService,
 		private userEntityService: UserEntityService,
 		private emailService: EmailService,
 		private userAuthService: UserAuthService,
@@ -105,7 +106,7 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 				if (!res.available) {
 					throw new ApiError(meta.errors.unavailable);
 				}
-			} else if ((await this.metaService.fetch()).emailRequiredForSignup) {
+			} else if (this.serverSettings.emailRequiredForSignup) {
 				throw new ApiError(meta.errors.emailRequired);
 			}
 
@@ -132,9 +133,9 @@ export default class extends Endpoint<typeof meta, typeof paramDef> { // eslint-
 
 				const link = `${this.config.url}/verify-email/${code}`;
 
-				this.emailService.sendEmail(ps.email, '電子メールアドレスを認証して下さい',
+				this.emailService.sendEmail(ps.email, '電子メールアドレスの変更が申請されました',
 					`To verify email, please click this link:<br><a href="${link}">${link}</a>`,
-					`@${me.username}様\r\nユーザID：${me.id}\r\n\r\n\r\n貴方の会員口座に登録されている電子メールアドレスが変更されました。\r\n次のURLにアクセスして、この電子メールアドレスを認証して下さい。\r\n\r\n${link}\r\n\r\n今後、座談會俱樂部からの電子メールは、この電子メールアドレスに対して送られます。`
+					`@${me.username}\r\nユーザーID：${me.id}\r\n\r\n\r\n電子メールアドレスの変更を完了するには、次のURLにアクセスして電子メールアドレスを認証して下さい：\r\n${link}`
 				);
 			}
 
